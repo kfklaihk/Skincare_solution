@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/kevinlai/databases/kevindb",
+      "type": "mssql.azure",
+      "connectionId": "ipsalyzerContainer",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

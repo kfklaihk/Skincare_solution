@@ -1,0 +1,761 @@
+﻿@using PagedList.Mvc
+@model IPSAlyzer_v1.ViewModels.IndexViewModel
+
+@{
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Kevin Lai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+    <script src="html2canvas.js"></script>
+    <!-- Kevin Lai -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IPSA | Recipe Co-Creation</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css">
+
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="css/materialdesignicons.min.css" />
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css" />
+
+    <style>
+        .ul.pagination {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.pagination li {
+            display: inline;
+        }
+
+            ul.pagination li a {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+                transition: background-color .3s;
+            }
+
+                ul.pagination li a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+                ul.pagination li a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR  -->
+    <nav class="navbar fixed-top navbar-custom">
+        <div class="container" id="header">
+
+            <div class="col-3">
+                <div class="text-left">
+                    <!-- <a class="" href="#qrcode"><i class="mdi mdi-qrcode-scan ml-2" data-toggle="modal" data-target="#modal-qrcode"></i></a> -->
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="text-center">
+                    <a class="navbar-brand logo" href="#">&nbsp;</a>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="text-right">
+                    <!--  <a class="" href="#" data-toggle="modal" data-target="#modal-share"><i class="mdi mdi-share mr-2"></i><span class="menu-item"></span></a>
+
+    </a>
+      -->
+                    <button id="print" class="pdf">Download Pdf</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- NAVBAR END -->
+    <!-- MODAL SHARE -->
+    <div class="modal fade" id="modal-share" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center" id="">Modal Menu</h4><br>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //END MODAL SHARE -->
+    <!-- MODAL ADD ITEMS -->
+    <div class="modal fade" id="modal-additem" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--  add for modal-->
+                    <input id="buttonId" type="hidden" value="">
+                    <div class="container">
+                        <!--  Kevin Lai-->
+                        @{int i = 1; }
+                        @if (Model.P_s != null)
+                        {
+
+                            foreach (var item in Model.P_s)
+                            {
+                                <!-- ITEM 1 START-->
+                                <!-- ITEM CONTENT -->
+
+                                <div class="row ">
+
+                                    <!-- ITEM IMAGE -->
+                                    <div class="col-md-12 text-center">
+                                        <img src="@item.Pic_link" class="" alt="" />
+                                        <form action="Add" method="get">
+                                            <h5>
+                                                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+
+                                                <p>
+                                                    <select name="catid">
+
+                                                        <option selected disabled> -- select care option -- </option>
+
+
+                                                        @foreach (var x in Model.P_Cat)
+                                                        {
+                                                            <option value="@x.Id">@x.Name</option>
+
+                                                        }
+                                                    </select>
+
+                                                </p>
+                                                <input name="fid" type="hidden" value="@item.Id">
+                                                <input name="proc_fid" type="hidden" value="@ViewBag.selectid">
+                                            </h5>
+                                            <!-- Add OPTION -->
+                                            <br />
+
+                                            <p><input type="submit" value="Add"> </p>
+
+                                        </form>
+                                        <!-- //ADD OPTION END -->
+                                    </div>
+                                    <!-- //ITEM IMAGE END -->
+
+
+                                </div>
+
+
+                                <!-- //ITEM CONTENT END -->
+                                <!-- //ITEM 1 END -->
+                                i = i + 1;
+
+
+                            }
+                        }
+                        <!-- Kevin Lai-->
+                    </div>
+                    <!-- page list bar -->
+                    <!--  added 20220223-->
+                    <div class="container row">
+                        <!--<div class="col-md-12 text-center"> -->
+                        <div class="">
+                            <p>
+                                Page @(Model.P_s.PageCount < Model.P_s.PageNumber ? 0 : Model.P_s.PageNumber)
+                                of @Model.P_s.PageCount
+                            </p>
+                        </div>
+                        <!-- </div>-->
+                    </div>
+                    <!--  added 20220223-->
+
+                    <div class="pagination">
+                         @Html.PagedListPager(Model.P_s, page => Url.Action("Index", new { fid = ViewBag.selectid, page, mode = true, catid = 1 }))
+                    </div>
+                    <!-- page list bar -->
+                    <!--  add for modal-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //END MODAL ADD ITEMS -->
+    <!-- INTRODUCTION START -->
+    <section class="start pt-4 pb-4" id="introduction">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <div class="text-center">
+                        <h2 class="text-uppercase">MY PERSONAL RECIPE</h2>
+
+                        <!-- SKIN CONDITION DROPDOWN -->
+                        <form id="selectp" action="index" method="get">
+                            <select name="fid" class="recipe" id="skcid">
+                                @if (ViewBag.selectid == null)
+                                {
+                                    <option selected disabled></option>
+                                }
+                                else
+                                {
+                                    <option disabled> -- select an option -- </option>
+                                }
+
+                                @foreach (var x in Model.P_Func)
+                                {
+                                    if (x.Id == ViewBag.selectid)
+                                    {
+                                        <option value="@x.Id" selected>@x.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@x.Id">@x.Name</option>
+                                    }
+
+
+                                }
+
+                            </select>
+                            <input type="submit" id="submitButton" name="submitButton" value="Search" class="custom-cta">
+                            <br>
+                        </form>
+                        <!-- //SKIN CONDITION DROPDOWN -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>
+            <section></section>
+            <!--<button id="print">Download Pdf</button>  -->
+        </p>
+    </section>
+    <!--  Kevin Lai-->
+    <!--  Kevin Lai-->
+    <div id="wrapper">
+        <div class="overlay"></div>
+        <div id="productselect">
+            <!-- Sidebar -->
+            <nav class="side-navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+                <ul class="nav sidebar-nav">
+                    <div class="sidebar-header">
+                        <div class="sidebar-brand">
+                            <p>Add Products</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <!--  Kevin Lai-->
+
+                        @if (Model.P_s != null)
+                        {
+
+                            foreach (var item in Model.P_s)
+                            {
+                                <!-- ITEM 1 START-->
+                                <!-- ITEM CONTENT -->
+
+                                <div class="row ">
+
+                                    <!-- ITEM IMAGE -->
+                                    <div class="col-md-12 text-center">
+                                        <img src="@item.Pic_link" class="" alt="" />
+                                        <form action="Add" method="get">
+                                            <h5>
+                                                <p>@Html.DisplayFor(modelItem => item.Name)</p>
+
+                                                <p>
+                                                    <select name="catid">
+
+                                                        <option selected disabled> -- select care option -- </option>
+
+
+                                                        @foreach (var x in Model.P_Cat)
+                                                        {
+                                                            <option value="@x.Id">@x.Name</option>
+
+                                                        }
+                                                    </select>
+
+                                                </p>
+                                                <input name="fid" type="hidden" value="@item.Id">
+                                                <input name="proc_fid" type="hidden" value="@ViewBag.selectid">
+                                            </h5>
+                                            <!-- Add OPTION -->
+                                            
+                                            <p><input type="submit" value="Add" class="custom-add"> </p>
+
+                                        </form>
+                                        <!-- //ADD OPTION END -->
+                                    </div>
+                                    <!-- //ITEM IMAGE END -->
+
+
+                                </div>
+
+
+                                <!-- //ITEM CONTENT END -->
+                                <!-- //ITEM 1 END -->
+
+
+
+                            }
+                        }
+                        <!-- Kevin Lai-->
+                        <!-- page list bar -->
+                        <!--  added 20220223-->
+                    <div class="container row">
+                        <div class="col-md-12 text-center">
+                            <div class="">
+                                <p>
+                                    Page @(Model.P_s.PageCount < Model.P_s.PageNumber ? 0 : Model.P_s.PageNumber)
+                                    of @Model.P_s.PageCount
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                        <!--  added 20220223-->
+                        <div class="pagination">
+                             @Html.PagedListPager(Model.P_s, page => Url.Action("Index", new { fid = ViewBag.selectid,page,mode = false }))
+                        </div>
+                        <!-- page list bar -->
+
+
+                    </div>
+                </ul>
+
+
+            </nav>
+            <!-- /#sidebar-wrapper -->
+           
+
+        </div>
+
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <!-- Kevin Lai-->
+            <div id="recipe">
+                <section class="section start">
+
+                    <div class="container">
+                        @{int i1;
+                            int n;
+                            int c = 1;
+                        }
+                        @*  @{int n; }
+                    @{int c = 1;}
+                        *@
+                        @{ foreach (var cat in Model.P_Cat)
+                            {
+                                <!-- DAY SECTION -->
+
+                                @*    <section class="section start">
+                            <div class="container">
+                                                <div id="recipe_@(c)">
+                                *@
+                        <div id="recipe_@(c)">
+                            <div class="container">
+                                
+                                   
+                                        <!--   pdf heading-->
+                                        <div id="hd_@(c)" class="container hideable2">
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-9">
+                                                    <div class="text-center">
+                                                        
+                                                        <h2 class="text-uppercase">MY PERSONAL RECIPE  <span class="logo2">&nbsp;</span></h2>
+                                                        <h3 class="skcid_fill"></h3>
+
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!--    pdf heading-->
+                                    
+
+                                    <!-- //SECTION HEADING -->
+                                    <div class="row pt-4">
+                                        <div class="col-md-12">
+                                            <div class="sectionhead" id="day">
+                                                <h3 class="text-uppercase">@cat.Name</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <!-- //SECTION HEADING END-->
+                                    @{ i1 = 1;
+                                        n = 1;
+                                    }
+
+
+                                    @foreach (var item in Model.P_recipe.Where(x => x.Product_CatId == cat.Id))
+                                    {
+
+                                        if (n == 1)
+                                        {
+                                            @: <div class="row mt-4">
+                                            }
+
+                                            <!-- ITEM 1 START-->
+                                            <div class="col-md-4">
+                                                <!-- LABEL START -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="text-center label day">
+                                                            <p> @i1 </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- //LABEL END -->
+                                                <!-- ITEM CONTENT -->
+                                                <div class="container itemcard mt-4">
+                                                    <!--  added 20220223-->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="text-center">
+                                                                <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--  added 20220223-->
+                                                    <div class="row ">
+                                                        <!-- ITEM IMAGE -->
+                                                        <div class="col-md-4 text-center">
+                                                            <img src="@item.Pic_link" class="" alt="">
+                                                            
+                                                        </div>
+                                                        <!-- //ITEM IMAGE END -->
+                                                        <!-- ITEM DESCRIPTION -->
+                                                        <div class="col-md-8">
+
+
+                                                            <h5>Skin Solution</h5>
+                                                            <h5>@Html.DisplayFor(modelItem => item.Description)</h5>
+                                                            <h5>Usage</h5>
+                                                            <p>@Html.DisplayFor(modelItem => item.Usage)</p>
+                                                        </div>
+                                                        <!-- //ITEM DESCRIPTION END -->
+                                                    </div>
+                                                    <!-- Delete OPTION -->
+                                                    <div class="delete text-right hideable">
+                                                        <p>
+                                                            <i class="mdi mdi-delete mr-1"></i> @Html.ActionLink("Delete", "Delete", new { fid = item.Id, catid = item.Product_CatId })
+                                                        </p>
+                                                    </div>
+                                                    <!-- //Delete OPTION END -->
+                                                </div>
+                                                <!-- //ITEM CONTENT END -->
+                                            </div>
+                                            <!-- //ITEM 1 END -->
+                                            if (n == 3)
+                                            {
+                                            @:                        </div>
+                                        }
+                                        i1 = i1 + 1;
+                                        n = n + 1;
+                                        if (n == 4)
+                                        { n = 1; }
+                                    }
+
+
+                                    <!-- last add item icon-->
+                                    @if (n == 1)
+                                    {
+                                        @:      <div class="row mt-4">
+                                        }
+                                    <!-- ADD ITEM START-->
+                                    <div class="col-md-4">
+
+                                        <!-- LABEL START -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="emptylabel">
+                                                    <p> &nbsp; </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- //LABEL END -->
+                                        <!-- Add item Button -->
+                                        <div class="container additem mt-4 hideable">
+                                            <div class="row text-center">
+                                                <button class="button" id="button@(c)" type="button" name="button" data-toggle="modal" data-target="#modal-additem">+</button>
+                                                <p>add more products</p>
+                                            </div>
+                                        </div>
+                                        <!-- //Add item Button END -->
+
+                                    </div> <!-- //ADD ITEM END -->
+                                    <!-- last add item icon-->
+                                    @{c = c + 1;
+                                    }
+                                    @if (n != 1 || n == 1)
+                                    {
+                                    @:                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                }
+
+                                
+                            </div>
+</div>
+                                @*     </div>
+                            </section>
+                                *@ <!-- //DAY CARE SECTION END -->
+                                        }
+                        }
+                        </p>
+                </section>
+                <section><p></p></section>
+            </div>
+            @{ c = c - 1; }
+            <!--  Kevin Lai-->
+            <!-- FOOTER START -->
+            <section class=" footer start" id="">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <p class="mb-0">©2022 Shiseido Hong Kong Limited. All rights reserved</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- FOOTER END -->
+        </div>
+            <!-- /#page-content-wrapper -->
+            </div>
+            <!-- /#wrapper -->
+
+
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+
+            <script type="text/javascript">
+                const { PDFDocument, StandardFonts, rgb } = PDFLib
+
+                $(document).ready(function () {
+                    var trigger = $('.hamburger'),
+                        overlay = $('.overlay'),
+                        isClosed = false;
+
+                    trigger.click(function () {
+                        hamburger_cross();
+                    });
+
+                    function hamburger_cross() {
+
+                        if (isClosed == true) {
+                            overlay.hide();
+                            trigger.removeClass('is-open');
+                            trigger.addClass('is-closed');
+                            isClosed = false;
+                        } else {
+                            overlay.show();
+                            trigger.removeClass('is-closed');
+                            trigger.addClass('is-open');
+                            isClosed = true;
+                        }
+                    }
+
+                    $('[data-toggle="offcanvas"]').click(function () {
+                        $('#wrapper').toggleClass('toggled');
+                    });
+
+                    function output_section(i, cnt, arraybuffer, skip,j) {
+                        var rcp = "recipe_" + i;
+                        html2canvas(document.getElementById(rcp)).then(function (canvas) {
+
+                            var img = canvas.toDataURL("image/png");
+                            window.jsPDF = window.jspdf.jsPDF
+                            var pdf = new jsPDF('P', 'mm', 'a4');
+
+
+                            // console.log(img);
+
+                            var position = 10;
+                            //    var pdf = new jsPDF('L', 'px', [w, h]);
+                            var w = Math.floor(pdf.internal.pageSize.getWidth());
+                            var h = Math.floor(pdf.internal.pageSize.getHeight());
+                            var imgHeight = canvas.height * w / canvas.width;
+                            var heightLeft = imgHeight;
+                            //    console.log(w);
+                            //    console.log(h);
+                            pdf.addImage(img, 'PNG', 0, position, w, imgHeight);
+
+                            heightLeft -= h;
+                            while (heightLeft >= 0) {
+                                position += heightLeft - imgHeight; // top padding for other pages
+                                pdf.addPage();
+                                pdf.addImage(img, 'PNG', 0, position, w, imgHeight);
+                                heightLeft -= h;
+                            }
+
+                            if (skip[i - 1] != 0) {
+                                arraybuffer[j] = pdf.output('arraybuffer');
+                                j = j + 1;
+                            }
+                      //      pdf.save('recipe_'+i+'.pdf');
+                            if (i == cnt) {
+                                $('.hideable').show();
+                                $('.hideable2').hide();
+                                mergePdfs(arraybuffer);
+                                return true;
+                            }
+                            else {
+                                output_section(i + 1, cnt, arraybuffer,skip,j);
+
+                            }
+
+
+                        });
+                    }
+
+                    async function asyncForEach(array, callback) {
+                        for (let index = 0; index < array.length; index++) {
+                            await callback(array[index], index, array)
+                        }
+                    }
+
+                            async function  mergePdfs(pdfsToMerges) {
+                            const mergedPdf = await PDFDocument.create();
+                           @* const actions = pdfsToMerges.map(async pdfBuffer => {
+                                const pdf = await PDFDocument.load(pdfBuffer);
+
+                                const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                                copiedPages.forEach((page) => {
+                                    // console.log('page', page.getWidth(), page.getHeight());
+                                   // page.setWidth(210);
+                                    mergedPdf.addPage(page);
+                                });
+                            });
+
+                            await Promise.all(actions);
+                            *@
+                                const actions = asyncForEach(pdfsToMerges,async pdfBuffer => {
+                                    const pdf = await PDFDocument.load(pdfBuffer);
+
+                                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                                    copiedPages.forEach((page) => {
+
+                                        mergedPdf.addPage(page);
+                                    });
+                                });
+                                await actions;
+
+                                const mergedPdfFile = await mergedPdf.save();
+                                download(mergedPdfFile, "IPSA-My-Persoaal-Recipe.pdf", "application/pdf");
+
+                            return true;
+                        }
+
+                    const skiparray = [];
+                    var array = @Html.Raw(Json.Encode(@ViewBag.skip));
+                    for(var i = 0; i < array.length; i++) {
+                    skiparray[i] = array[i];
+                        }
+
+                    $("#print").click(function () {
+                        $('.skcid_fill').html($('#skcid').find("option:selected").text());
+                        $('#hd_@(ViewBag.first)').show();
+                        $('.hideable').hide();
+                        window.jsPDF = window.jspdf.jsPDF
+                        var pdf = new jsPDF('P', 'mm', 'a4');
+                        const arraybuffer = [];
+
+
+                        output_section(1, @(c), arraybuffer, skiparray,0);
+
+
+                      //  pdf.save('recipe.pdf');
+
+                    });
+
+                     $('.hideable').show();
+                    $('.hideable2').hide();
+                  @if (ViewBag.mode == true)
+                      {
+                        @: $("#button1").click();
+                      }
+                      else
+                      {
+                          @:trigger.click();
+                      }
+
+                  });
+            </script>
+
+        </body>
+
+        </html>

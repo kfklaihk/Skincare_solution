@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{182CD4AC-3F1D-4FD8-8274-2FC0F342EBE1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IPSAlyzer_v1</RootNamespace>
+    <AssemblyName>IPSAlyzer_v1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ipsalyzer.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ipsalyzer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ipsalyzer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ipsalyzer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ipsalyzer.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_Cat.cs">
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_Func.cs">
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\recipe.cs">
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Skin_Solution.cs">
+      <DependentUpon>ipsalyzer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\IPSAlyzer_v1.dll" />
+    <Content Include="bin\IPSAlyzer_v1.pdb" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\PagedList.dll" />
+    <Content Include="bin\PagedList.Mvc.dll" />
+    <Content Include="bin\PagedList.Mvc.xml" />
+    <Content Include="bin\PagedList.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\materialdesignicons.min.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.theme.css" />
+    <Content Include="css\owl.transitions.css" />
+    <Content Include="css\sidebar.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="html2canvas.js" />
+    <Content Include="images\Barrier Serum.jpg" />
+    <Content Include="images\Cleansing Cream EX.jpg" />
+    <Content Include="images\Cleansing Creamy Paste.jpg" />
+    <Content Include="images\Cleansing Foam Sensitive.jpg" />
+    <Content Include="images\Cleansing for Point Makeup EX.jpg" />
+    <Content Include="images\Cleansing Fresh Foam.jpg" />
+    <Content Include="images\Cleansing Gel EX.jpg" />
+    <Content Include="images\Cleansing Marine Cake.jpg" />
+    <Content Include="images\Cleansing Moisture Foam.jpg" />
+    <Content Include="images\Cleansing Oil EX.jpg" />
+    <Content Include="images\Cleansing Warm Gel.jpg" />
+    <Content Include="images\Clearup Lotion 1.jpg" />
+    <Content Include="images\Clearup Lotion 2.jpg" />
+    <Content Include="images\control base - blue.jpg" />
+    <Content Include="images\control base - pink.jpg" />
+    <Content Include="images\control base - yellow.jpg" />
+    <Content Include="images\Control Powder.jpg" />
+    <Content Include="images\Cream Ultimate.jpg" />
+    <Content Include="images\Creative Concealer EX.jpg" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\Foundation Ultimate.jpg" />
+    <Content Include="images\item-aqua.jpg" />
+    <Content Include="images\item-aqua_1.jpg" />
+    <Content Include="images\item-barrier.jpg" />
+    <Content Include="images\item-cleansing-foam.jpg" />
+    <Content Include="images\item-cleansing-foam_1.jpg" />
+    <Content Include="images\item-cleansing-moisture-foam.jpg" />
+    <Content Include="images\item-cleansing-oil.jpg" />
+    <Content Include="images\item-clear-up-lotion.jpg" />
+    <Content Include="images\item-me3.jpg" />
+    <Content Include="images\item-water-massage.jpg" />
+    <Content Include="images\logo-ipsa-white.svg" />
+    <Content Include="images\logo-ipsa.svg" />
+    <Content Include="images\Loose Powder.jpg" />
+    <Content Include="images\Luminizing Clay.jpg" />
+    <Content Include="images\pattern-arches.png" />
+    <Content Include="images\Powder foundation N.jpg" />
+    <Content Include="images\Protector Daytime Shield.jpg" />
+    <Content Include="images\Protector Sensitive.jpg" />
+    <Content Include="images\Protector Sun Shield.jpg" />
+    <Content Include="images\Refining Lotion.jpg" />
+    <Content Include="images\Retexturing Foundation.jpg" />
+    <Content Include="images\Serum 0 eye.jpg" />
+    <Content Include="images\Silk Cotton.jpg" />
+    <Content Include="images\Targeted Effected_G.jpg" />
+    <Content Include="images\Targeted Effected_S.jpg" />
+    <Content Include="images\Targeted Effects Advanced G.jpg" />
+    <Content Include="images\Targeted Effects Advanced S.jpg" />
+    <Content Include="images\The Time Reset Aqua Day Essence Stick.jpg" />
+    <Content Include="images\The Time Reset Aqua W.jpg" />
+    <Content Include="images\The Time Reset Lip Essence.jpg" />
+    <Content Include="images\The Time Reset Micro Mist.jpg" />
+    <Content Include="images\Water Massage.jpg" />
+    <Content Include="images\White Process Mask.png" />
+    <Content Include="images\再生緊緻乳液1-4.jpg" />
+    <Content Include="images\升級更新亮膚乳液.jpg" />
+    <Content Include="images\升級更新亮膚乳液1.jpg" />
+    <Content Include="images\升級更新亮膚乳液2.jpg" />
+    <Content Include="images\升級更新亮膚乳液3.jpg" />
+    <Content Include="images\升級更新亮膚乳液4.jpg" />
+    <Content Include="images\升級更新亮膚乳液5.jpg" />
+    <Content Include="images\升級更新亮膚乳液6.jpg" />
+    <Content Include="images\升級更新亮膚乳液7.jpg" />
+    <Content Include="images\升級更新亮膚乳液8.jpg" />
+    <Content Include="images\升級版ME更新亮膚抗敏乳液1-4.jpg" />
+    <Content Include="images\緊緻新肌精華.jpg" />
+    <Content Include="images\美白淨斑精華%28極致版%29.jpg" />
+    <Content Include="js\app.js" />
+    <Content Include="js\bootstrap.bundle.min.js" />
+    <Content Include="js\iframeResizer.min.js" />
+    <Content Include="js\isotope.js" />
+    <Content Include="js\jquery.counterup.min.js" />
+    <Content Include="js\jquery.easing.min.js" />
+    <Content Include="js\jquery.magnific-popup.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\owl.carousel.min.js" />
+    <Content Include="js\scrollspy.min.js" />
+    <Content Include="Models\ipsalyzer.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ipsalyzer.Context.cs</LastGenOutput>
+      <DependentUpon>ipsalyzer.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ipsalyzer.edmx.sql" />
+    <Content Include="Models\ipsalyzer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ipsalyzer.cs</LastGenOutput>
+      <DependentUpon>ipsalyzer.edmx</DependentUpon>
+    </Content>
+    <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll" />
+    <Content Include="packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.pdb" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap-theme.css" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap-theme.min.css" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap.css" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap.min.css" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Scripts\bootstrap.js" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Scripts\bootstrap.min.js" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap-theme.css" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap-theme.min.css" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap.css" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap.min.css" />
+    <Content Include="packages\bootstrap.3.4.1\content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="packages\bootstrap.3.4.1\content\Scripts\bootstrap.js" />
+    <Content Include="packages\bootstrap.3.4.1\content\Scripts\bootstrap.min.js" />
+    <Content Include="packages\bootstrap.3.4.1\LICENSE.txt" />
+    <Content Include="packages\EntityFramework.6.4.0\build\Microsoft.Data.Entity.Build.Tasks.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net40\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net40\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net40\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\net45\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\netstandard2.1\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\netstandard2.1\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\netstandard2.1\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\lib\netstandard2.1\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\about_EntityFramework6.help.txt" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net40\any\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net40\any\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net40\win-x86\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net40\win-x86\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net45\any\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net45\any\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net45\win-x86\ef6.exe" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\net45\win-x86\ef6.pdb" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\netcoreapp3.0\any\ef6.dll" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\netcoreapp3.0\any\ef6.pdb" />
+    <Content Include="bin\IPSAlyzer_v1.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1-vsdoc.js" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.js" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.min.js" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="packages\jQuery.3.4.1\Tools\jquery-3.4.1.intellisense.js" />
+    <None Include="packages\jQuery.Validation.1.17.0\Content\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="packages\jQuery.Validation.1.17.0\Content\Scripts\jquery.validate.js" />
+    <Content Include="packages\jQuery.Validation.1.17.0\Content\Scripts\jquery.validate.min.js" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.xml" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\system.web.optimization.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.xml" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.xml" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csi.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.AppContext.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.Collections.Immutable.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.Diagnostics.StackTrace.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.IO.FileSystem.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\System.Reflection.Metadata.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\VBCSCompiler.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csi.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CodeAnalysis.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.Win32.Primitives.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.AppContext.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Collections.Immutable.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Console.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Diagnostics.StackTrace.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Globalization.Calendars.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.IO.Compression.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.IO.Compression.ZipFile.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.IO.FileSystem.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Net.Http.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Net.Sockets.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Reflection.Metadata.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Text.Encoding.CodePages.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.ValueTuple.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Xml.ReaderWriter.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Xml.XmlDocument.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Xml.XPath.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\System.Xml.XPath.XDocument.dll" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.exe" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.11\Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.11\Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="packages\Modernizr.2.8.3\Content\Scripts\modernizr-2.8.3.js" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\netcoreapp1.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\uap10.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\cs\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\cs\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\de\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\de\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\de\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\fr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\fr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\it\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\it\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\it\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ja\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ja\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ko\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ko\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pl\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pl\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pt\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pt\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\tr\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\tr\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hant\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hant\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\_common\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\de\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\de\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\es\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\es\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\it\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\it\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\net45\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\de\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\de\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\es\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\es\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\it\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\it\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\Microsoft.VisualStudio.TestPlatform.TestFramework.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\netstandard1.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\cs\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\de\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\de\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\es\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\es\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\fr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\it\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\it\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ja\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ko\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\Microsoft.VisualStudio.TestPlatform.TestFramework.XML" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\pl\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\pt\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\tr\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\lib\uap10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.TestFramework.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard1.3\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\PagedList.1.17.0.0\lib\net40\PagedList.dll" />
+    <Content Include="packages\PagedList.1.17.0.0\lib\net40\PagedList.xml" />
+    <Content Include="packages\PagedList.Mvc.4.5.0.0\Content\Content\PagedList.css" />
+    <Content Include="packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll" />
+    <Content Include="packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.XML" />
+    <Content Include="packages\WebGrease.1.6.0\lib\WebGrease.dll" />
+    <Content Include="packages\WebGrease.1.6.0\tools\WG.EXE" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\ipsalyzer.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ipsalyzer.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ipsalyzer.edmx.diagram">
+      <DependentUpon>ipsalyzer.edmx</DependentUpon>
+    </Content>
+    <Content Include="packages\Antlr.3.5.0.2\.signature.p7s" />
+    <Content Include="packages\Antlr.3.5.0.2\Antlr.3.5.0.2.nupkg" />
+    <Content Include="packages\bootstrap.3.4.1\.signature.p7s" />
+    <Content Include="packages\bootstrap.3.4.1\bootstrap.3.4.1.nupkg" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap-theme.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap-theme.min.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\Content\bootstrap.min.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="packages\bootstrap.3.4.1\contentFiles\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap-theme.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap-theme.min.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\content\Content\bootstrap.min.css.map" />
+    <Content Include="packages\bootstrap.3.4.1\content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages\bootstrap.3.4.1\content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="packages\bootstrap.3.4.1\content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="packages\bootstrap.3.4.1\content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages\EntityFramework.6.4.0\.signature.p7s" />
+    <Content Include="packages\EntityFramework.6.4.0\buildTransitive\EntityFramework.props" />
+    <Content Include="packages\EntityFramework.6.4.0\buildTransitive\EntityFramework.targets" />
+    <Content Include="packages\EntityFramework.6.4.0\buildTransitive\netcoreapp3.0\EntityFramework.props" />
+    <Content Include="packages\EntityFramework.6.4.0\buildTransitive\netcoreapp3.0\EntityFramework.targets" />
+    <Content Include="packages\EntityFramework.6.4.0\build\EntityFramework.DefaultItems.props" />
+    <Content Include="packages\EntityFramework.6.4.0\build\EntityFramework.props" />
+    <Content Include="packages\EntityFramework.6.4.0\build\EntityFramework.targets" />
+    <Content Include="packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.props" />
+    <Content Include="packages\EntityFramework.6.4.0\build\netcoreapp3.0\EntityFramework.targets" />
+    <Content Include="packages\EntityFramework.6.4.0\content\net40\App.config.install.xdt" />
+    <Content Include="packages\EntityFramework.6.4.0\content\net40\App.config.transform" />
+    <Content Include="packages\EntityFramework.6.4.0\content\net40\Web.config.install.xdt" />
+    <Content Include="packages\EntityFramework.6.4.0\content\net40\Web.config.transform" />
+    <Content Include="packages\EntityFramework.6.4.0\EntityFramework.6.4.0.nupkg" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\EntityFramework6.PS2.psd1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\EntityFramework6.PS2.psm1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\EntityFramework6.psd1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\EntityFramework6.psm1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\init.ps1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\install.ps1" />
+    <Content Include="packages\EntityFramework.6.4.0\tools\netcoreapp3.0\any\ef6.runtimeconfig.json" />
+    <Content Include="packages\jQuery.3.4.1\.signature.p7s" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.min.map" />
+    <Content Include="packages\jQuery.3.4.1\Content\Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="packages\jQuery.3.4.1\jQuery.3.4.1.nupkg" />
+    <Content Include="packages\jQuery.3.4.1\Tools\common.ps1" />
+    <Content Include="packages\jQuery.3.4.1\Tools\install.ps1" />
+    <Content Include="packages\jQuery.3.4.1\Tools\uninstall.ps1" />
+    <Content Include="packages\jQuery.Validation.1.17.0\.signature.p7s" />
+    <Content Include="packages\jQuery.Validation.1.17.0\jQuery.Validation.1.17.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\.signature.p7s" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.Mvc.5.2.7\Microsoft.AspNet.Mvc.5.2.7.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.7\.signature.p7s" />
+    <Content Include="packages\Microsoft.AspNet.Razor.3.2.7\Microsoft.AspNet.Razor.3.2.7.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\.signature.p7s" />
+    <Content Include="packages\Microsoft.AspNet.Web.Optimization.1.1.3\Microsoft.AspNet.Web.Optimization.1.1.3.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\.signature.p7s" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\Content\Web.config.install.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\Content\Web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.AspNet.WebPages.3.2.7\Microsoft.AspNet.WebPages.3.2.7.nupkg" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\.signature.p7s" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.Extensions.props" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.Extensions.props" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net45\app.config.install.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net45\app.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net45\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net45\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net46\app.config.install.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net46\app.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net46\web.config.install.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\content\net46\web.config.uninstall.xdt" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1.nupkg" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\net45\install.ps1" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\net45\uninstall.ps1" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csi.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.CSharp.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\VBCSCompiler.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csi.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\csi.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.CSharp.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.Managed.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.exe.config" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.rsp" />
+    <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe.config" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.11\.signature.p7s" />
+    <Content Include="packages\Microsoft.jQuery.Unobtrusive.Validation.3.2.11\Microsoft.jQuery.Unobtrusive.Validation.3.2.11.nupkg" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\.signature.p7s" />
+    <Content Include="packages\Microsoft.Web.Infrastructure.1.0.0.0\Microsoft.Web.Infrastructure.1.0.0.0.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\.signature.p7s" />
+    <Content Include="packages\Modernizr.2.8.3\Modernizr.2.8.3.nupkg" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\common.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\install.ps1" />
+    <Content Include="packages\Modernizr.2.8.3\Tools\uninstall.ps1" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\.signature.p7s" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.props" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\net45\MSTest.TestAdapter.targets" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\netcoreapp1.0\MSTest.TestAdapter.props" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\uap10.0\MSTest.TestAdapter.props" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\build\uap10.0\MSTest.TestAdapter.targets" />
+    <Content Include="packages\MSTest.TestAdapter.1.2.0\MSTest.TestAdapter.1.2.0.nupkg" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\.signature.p7s" />
+    <Content Include="packages\MSTest.TestFramework.1.2.0\MSTest.TestFramework.1.2.0.nupkg" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\.signature.p7s" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\LICENSE.md" />
+    <Content Include="packages\Newtonsoft.Json.12.0.2\Newtonsoft.Json.12.0.2.nupkg" />
+    <Content Include="packages\PagedList.1.17.0.0\.signature.p7s" />
+    <Content Include="packages\PagedList.1.17.0.0\PagedList.1.17.0.0.nupkg" />
+    <Content Include="packages\PagedList.Mvc.4.5.0.0\.signature.p7s" />
+    <Content Include="packages\PagedList.Mvc.4.5.0.0\PagedList.Mvc.4.5.0.0.nupkg" />
+    <Content Include="packages\WebGrease.1.6.0\.signature.p7s" />
+    <Content Include="packages\WebGrease.1.6.0\WebGrease.1.6.0.nupkg" />
+    <None Include="Properties\PublishProfiles\KevinShowcase - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\Index_v1.cshtml" />
+    <Content Include="Views\Products\Index - Copy.cshtml" />
+    <Content Include="Views\Products\Index - Copy %282%29.cshtml" />
+    <Content Include="Views\Products\Index - Copy %283%29.cshtml" />
+    <Content Include="Views\Products\Index - Copy %284%29.cshtml" />
+    <Content Include="Views\Products\Index - Copy %285%29.cshtml" />
+    <Content Include="Views\Products\Index - Copy %286%29.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="images\bak\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58407</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44305/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
