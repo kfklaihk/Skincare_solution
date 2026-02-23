@@ -17,7 +17,7 @@ namespace IPSAlyzer_v1.Controllers
         private ipsalyzerContainer db = new ipsalyzerContainer();
 
         // GET: Products
-        public ActionResult Index(int? fid, int? page, bool? mode, int? catid, string lang = "en")
+        public ActionResult Index(int? fid, int? page, bool? mode, int? catid, string lang = "zh")
         {
             if (mode == null)
             {
@@ -87,11 +87,11 @@ namespace IPSAlyzer_v1.Controllers
       
 
         // GET: Products/Create
-        public ActionResult Add(int? fid, int? catid, int? proc_fid, string lang)
+        public ActionResult Add(int? fid, int? catid, int? proc_fid, bool? mode, string lang, int? page)
         {
             if (fid == null || catid == null)
             {
-                return RedirectToAction("Index", new { fid = proc_fid, mode =false, lang=lang });
+                return RedirectToAction("Index", new { fid = proc_fid, mode =mode, lang=lang, page=page });
             }
             var product= db.Products.Include(p => p.Product_Func).Where(p => p.Id == fid).SingleOrDefault();
             product.Product_CatId = catid;
@@ -101,7 +101,7 @@ namespace IPSAlyzer_v1.Controllers
                 recp.Add(product);
             }
             Session["recipe"] = recp;
-            return RedirectToAction("Index", new { fid=proc_fid, mode = false, lang = lang });
+            return RedirectToAction("Index", new { fid=proc_fid, mode = mode, lang = lang, page=page });
             
         }
 

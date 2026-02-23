@@ -97,8 +97,18 @@
 
     </a>
       -->
-                    <button id="print" class="pdf">Download Pdf</button>
-                </div>
+                    @if (ViewBag.lang == "en")
+                    {
+                        
+                   @:<a href="@Url.Action("Index",new { fid = ViewBag.selectid, page = Model.P_s.PageNumber, mode = ViewBag.mode, catid = 1, lang = "zh" })">繁</a>
+                        }
+                        else
+                        {
+                    @:    <a href="@Url.Action("Index",new { fid = ViewBag.selectid, page = Model.P_s.PageNumber, mode = ViewBag.mode, catid = 1, lang = "en" })">ENG</a>
+                            }
+                            <span>&nbsp;</span>
+                            <button id="print" class="pdf">DOWNLOAD PDF</button>
+</div>
             </div>
         </div>
     </nav>
@@ -161,6 +171,7 @@
 
                             </select>
                             <input name="lang" type="hidden" value="@lang">
+                            <input name="mode" type="hidden" value=true>
                             <input type="submit" value="Search">
                         </h5>
                     </form>
@@ -202,6 +213,8 @@
                                                 <input name="fid" type="hidden" value="@item.Id">
                                                 <input name="proc_fid" type="hidden" value="@ViewBag.selectid">
                                                 <input name="lang" type="hidden" value="@lang">
+                                                <input name="mode" type="hidden" value=true>
+                                                <input name="page" type="hidden" value="@Model.P_s.PageNumber">
                                             </h5>
                                             <!-- Add OPTION -->
                                             
@@ -297,47 +310,48 @@
                     <div class="sidebar-header">
                         <div class="sidebar-brand">
                             <p>Add Products</p>
-                        </div>
-                        
-                        <div class="container row">
+                            <!--  </div>
+
+      <div class="container row"> -->
                             <!--   20220305 -->
-                            
-                                <form action="index" method="get">
-                                    <h5>
-                                        <p>
-                                            <select name="fid">
-                                                @if (ViewBag.selectid == null)
+
+                            <form action="index" method="get">
+                                <h5>
+                                    <p>
+                                        <select name="fid">
+                                            @if (ViewBag.selectid == null)
+                                            {
+                                                <option selected disabled></option>
+                                            }
+                                            else
+                                            {
+                                                <option disabled> -- select an option -- </option>
+                                            }
+
+                                            @foreach (var x in Model.P_Func)
+                                            {
+                                                if (x.Id == ViewBag.selectid)
                                                 {
-                                                    <option selected disabled></option>
+                                                    <option value="@x.Id" selected>@x.FirstL - @x.Name</option>
                                                 }
                                                 else
                                                 {
-                                                    <option disabled> -- select an option -- </option>
+                                                    <option value="@x.Id">@x.FirstL - @x.Name</option>
                                                 }
 
-                                                @foreach (var x in Model.P_Func)
-                                                {
-                                                    if (x.Id == ViewBag.selectid)
-                                                    {
-                                                        <option value="@x.Id" selected>@x.FirstL - @x.Name</option>
-                                                    }
-                                                    else
-                                                    {
-                                                        <option value="@x.Id">@x.FirstL - @x.Name</option>
-                                                    }
 
+                                            }
 
-                                                }
+                                        </select>
+                                        <input name="lang" type="hidden" value="@lang">
+                                        <input name="mode" type="hidden" value=false>
+                                    </p>
+                                    <input type="submit" value="Search">
+                                </h5>
+                            </form>
+                            <br />
 
-                                            </select>
-                                            <input name="lang" type="hidden" value="@lang">
-                                        </p>
-                                        <input type="submit" value="Search">
-                                    </h5>
-                                </form>
-                             
-
-                            </div>
+                        </div>
 
                             <!--    20220305 -->
                             <!--  Kevin Lai-->
@@ -376,6 +390,8 @@
                                                     <input name="fid" type="hidden" value="@item.Id">
                                                     <input name="proc_fid" type="hidden" value="@ViewBag.selectid">
                                                     <input name="lang" type="hidden" value="@lang">
+                                                    <input name="mode" type="hidden" value=false>
+                                                    <input name="page" type="hidden" value="@Model.P_s.PageNumber">
                                                 </h5>
                                                 <!-- Add OPTION -->
 
@@ -531,7 +547,7 @@
                                                 <h5>Skin Solution</h5>
                                                 <h5>@Html.DisplayFor(modelItem => item.Description)</h5>
                                                 <h5>Usage</h5>
-                                                <p>@Html.DisplayFor(modelItem => item.Usage)</p>
+                                                <h5>@Html.Raw(item.Usage)</h5>
                                             </div>
                                             <!-- //ITEM DESCRIPTION END -->
                                         </div>

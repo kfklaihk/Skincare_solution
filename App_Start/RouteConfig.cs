@@ -16,21 +16,25 @@ namespace IPSAlyzer_v1
             routes.MapRoute(
                name: "NoController",
                url: "{action}",
-               defaults: new { controller = "Products", action = "Index" }
+               defaults: new { controller = "Products", action = "Index"}
            );
-
+          
+/*
             routes.MapRoute(
-               name: "Lang",
+               name: "Lang Action",
                url: "{lang}/{action}",
-               defaults: new { controller = "Products", action = "Index", lang=UrlParameter.Optional },
+               defaults: new { controller = "Products", action = "Index", lang = UrlParameter.Optional },
                constraints: new { lang = "^en$|^zh$" }
            );
-
+*/
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
                 defaults: new { controller = "Products", action = "Index" }
             );
+
+
+            
         }
     }
 }

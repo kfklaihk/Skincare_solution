@@ -71,10 +71,10 @@ h4{
   font-weight:bold;
 }
 
-h5{
-  font-size:12px;
-  margin-top:0px;
-  font-weight:bold;
+h5 {
+    font-size: 12px;
+    margin-top: 0px;
+    font-weight: bold;
 }
 
 a {
@@ -573,14 +573,14 @@ CO CREATION RECIPE
   border-bottom: 1px solid #000000;
 }
 
-.itemcard{
-  background:#ffffff;
-  border-radius: 8px;
-  border: 2px solid #ECE6E1;
-  min-height:340px;
-  box-shadow: 0px 0px 32px 0px rgba(130,182,173,0.15);
+.itemcard {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #ECE6E1;
+    min-height:360px;
+    /* box-shadow: 0px 0px 32px 0px rgba(130,182,173,0.15);
   -webkit-box-shadow: 0px 0px 32px 0px rgba(130,182,173,0.15);
-  -moz-box-shadow: 0px 0px 32px 0px rgba(130,182,173,0.15);
+  -moz-box-shadow: 0px 0px 32px 0px rgba(130,182,173,0.15); */
 }
 
 .label{
@@ -641,13 +641,13 @@ CO CREATION RECIPE
 
 .additem{
   background:#F5F5F5;
-  min-height: 324px;
+  min-height: 360px;
 }
 
 .additem p{
   color: #666666;
   position:relative;
-  top:190px;
+  top:210px;
   margin: 0 auto;
 }
 
@@ -664,6 +664,12 @@ CO CREATION RECIPE
   border: 1px solid #CECECE;
 }
 
+.pdf {
+    color: #ffffff;
+    padding: 6px 12px;
+    background: #000000;
+    border: 1px solid #000000;
+}
 /*************************
 FORM
 ***************************/
@@ -686,15 +692,15 @@ FORM
   text-transform: uppercase;
 }
 
-.custom-add{
-  background:#AE9E91;
-  color: #ffffff;
-  border-radius: 0;
-  border:none;
-  padding:4px 24px;
-  margin:10px 0;
-  font-size::13px
-  text-transform:
+.custom-add {
+    background: #AE9E91;
+    color: #ffffff;
+    border-radius: 0;
+    border: none;
+    padding: 4px 24px;
+    margin: 0px 0px 10px 0;
+    font-size: 13px;
+    text-transform: uppercase;
 }
 
 .care-option{
